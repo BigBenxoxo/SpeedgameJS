@@ -76,6 +76,15 @@ const resetGame = () => {
     window.location.reload()
 }
 
+endButton.style.display = "none";
+startButton.addEventListener("click", () => {
+    startButton.style.display = "none";
+    endButton.style.display = "block";
+    endButton.style.marginLeft = "auto";
+    endButton.style.marginRight = "auto";
+    });
+
+
 
 startButton.addEventListener('click', startGame)
 endButton.addEventListener('click', endGame)
