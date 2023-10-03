@@ -1,8 +1,9 @@
 const startButton = document.querySelector('#startButton')
 const endButton = document.querySelector('#endButton')
-
 const circles = document.querySelectorAll('.circle')
 const scoreDisplay = document.querySelector('.score')
+const closeModalButton = document.querySelector('#closeModal')
+
 
 // Global variables 
 let score = 0;
@@ -67,13 +68,33 @@ circles[active].classList.remove('active')
     console.log(active);
 }
 const endGame = () => {
-    console.log("Game ended");
     clearTimeout(timer)
-    resetGame();
+    showModal()
 }
 
 const resetGame = () => {
     window.location.reload()
+}
+
+const showModal = () => {
+    const finalScore = document.querySelector('.final-score');
+    finalScore.textContent = score;
+ const modalMessage = document.querySelector('#modalMessage');
+
+ if (score >= 200) {
+    modalMessage.textContent = 'Wow! Youre a wizard!';
+ } else if (score >= 100) {
+    modalMessage.textContent = 'Decent, but you can do better champ.';
+ } else {
+    modalMessage.textContent = 'You really need to practice more..';
+ }
+
+    document.querySelector('.overlay').style.display = 'block';
+}
+
+const closeModal = () => {
+    document.querySelector('.overlay').style.display = 'none';
+    resetGame ();
 }
 
 endButton.style.display = "none";
@@ -84,7 +105,7 @@ startButton.addEventListener("click", () => {
     endButton.style.marginRight = "auto";
     });
 
-
-
+    
 startButton.addEventListener('click', startGame)
 endButton.addEventListener('click', endGame)
+closeModalButton.addEventListener('click', closeModal)

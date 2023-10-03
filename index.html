@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Speedgame</title>
   </head>
@@ -17,6 +21,17 @@
     </div>
     <button id="startButton">Start game</button>
     <button id="endButton">End game</button>
+    <div class="overlay">
+      <div class="modal" id="myModal">
+        <h2>Game over</h2>
+        <p>Your final score is: <span class="final-score">0</span></p>
+        <p id="modalMessage"></p>
+
+        <button class="close" id="closeModal">
+          <span class="material-symbols-outlined"> Close </span>
+        </button>
+      </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
