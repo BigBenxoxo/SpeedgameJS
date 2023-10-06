@@ -3,6 +3,7 @@ const endButton = document.querySelector('#endButton')
 const circles = document.querySelectorAll('.circle')
 const scoreDisplay = document.querySelector('.score')
 const closeModalButton = document.querySelector('#closeModal')
+const mosqAudio = document.querySelector('#mosq')   
 
 
 // Global variables 
@@ -99,6 +100,7 @@ const closeModal = () => {
 
 endButton.style.display = "none";
 startButton.addEventListener("click", () => {
+    mosqAudio.play()
     startButton.style.display = "none";
     endButton.style.display = "block";
     endButton.style.marginLeft = "auto";

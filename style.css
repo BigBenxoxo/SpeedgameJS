@@ -70,3 +70,9 @@ justify-content: center;
     cursor: pointer;
 }
 
+#shoot {
+
+    font-size: larger;
+    color: rgb(219, 4, 4);
+}
+
