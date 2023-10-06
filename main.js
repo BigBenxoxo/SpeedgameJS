@@ -100,11 +100,12 @@ const closeModal = () => {
 
 endButton.style.display = "none";
 startButton.addEventListener("click", () => {
-    mosqAudio.play()
     startButton.style.display = "none";
     endButton.style.display = "block";
     endButton.style.marginLeft = "auto";
     endButton.style.marginRight = "auto";
+    mosqAudio.play()
+    mosqAudio.volume = 0.4;
     });
 
     
