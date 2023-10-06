@@ -4,6 +4,8 @@ const circles = document.querySelectorAll('.circle')
 const scoreDisplay = document.querySelector('.score')
 const closeModalButton = document.querySelector('#closeModal')
 const mosqAudio = document.querySelector('#mosq')   
+const gunAudio = document.querySelector('#gun')
+const gameOver = document.querySelector('#gameover')
 
 
 // Global variables 
@@ -22,6 +24,9 @@ let rounds = 0;
 
 
 const clickCircle = (i) => {
+    gunAudio.pause();
+    gunAudio.currentTime = 0;
+    gunAudio.play();
 if (i !== active) {
    return endGame()
 }
@@ -69,6 +74,7 @@ circles[active].classList.remove('active')
     console.log(active);
 }
 const endGame = () => {
+    gameOver.play()
     clearTimeout(timer)
     showModal()
 }
@@ -106,6 +112,10 @@ startButton.addEventListener("click", () => {
     endButton.style.marginRight = "auto";
     mosqAudio.play()
     mosqAudio.volume = 0.4;
+    const audioDuration = 3000;
+    setTimeout(() => {
+        mosqAudio.pause();
+    }, audioDuration);
     });
 
     
