@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Nosifer&display=swap"
+    />
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -20,9 +25,12 @@
     <audio id="gameover">
       <source src="gameover.mp3" type="audio/mp3" />
     </audio>
-    <h1>Speedgame</h1>
+    <audio id="mortalkombat">
+      <source src="MortalKombat.mp3" type="audio/mp3" />
+    </audio>
+    <h1>Hunted</h1>
     <br />
-    <p id="shoot">Shoot the mosquitos!</p>
+    <p id="shoot">Shoot the mosquitoes!</p>
     <br />
     <p>Score: <span class="score">0</span></p>
     <div class="circles">
@@ -33,10 +41,29 @@
     </div>
     <button id="startButton">Start game</button>
     <button id="endButton">End game</button>
+    <button id="instButton">?</button>
+    <div id="instmodal">
+      <div id="meat">
+        <p>You are being attacked by nasty mosquitos!</p>
+        <br />
+        <p>When you see a mosquito, shoot it to accuire points.</p>
+        <br />
+        <p>The game gets progressively faster.</p>
+        <br />
+        <p>
+          If you miss, its <span id="red">game over.</span>
+          <button id="closeinst">
+            <span class="material-symbols-outlined"> Close </span>
+          </button>
+        </p>
+      </div>
+    </div>
     <div class="overlay">
       <div class="modal" id="myModal">
         <h2>Game over</h2>
+        <br />
         <p>Your final score is: <span class="final-score">0</span></p>
+        <br />
         <p id="modalMessage"></p>
 
         <button class="close" id="closeModal">

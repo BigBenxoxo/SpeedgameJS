@@ -6,6 +6,10 @@ const closeModalButton = document.querySelector('#closeModal')
 const mosqAudio = document.querySelector('#mosq')   
 const gunAudio = document.querySelector('#gun')
 const gameOver = document.querySelector('#gameover')
+const mortalKombat = document.querySelector('#mortalkombat')
+const instButton = document.querySelector('#instButton')
+const instmodal = document.querySelector('#instmodal')
+const closeinst = document.querySelector('#closeinst')
 
 
 // Global variables 
@@ -75,6 +79,10 @@ circles[active].classList.remove('active')
 }
 const endGame = () => {
     gameOver.play()
+    setTimeout(() => {
+        mortalKombat.play();
+    }, 1000);
+    
     clearTimeout(timer)
     showModal()
 }
@@ -89,19 +97,29 @@ const showModal = () => {
  const modalMessage = document.querySelector('#modalMessage');
 
  if (score >= 200) {
-    modalMessage.textContent = 'Wow! Youre a wizard!';
- } else if (score >= 100) {
-    modalMessage.textContent = 'Decent, but you can do better champ.';
+    modalMessage.style.color = 'green';
+    modalMessage.textContent = 'You decimated those nasty demons, you rock!';
+ } else if (score >= 90) {
+    modalMessage.style.color = 'red';
+    modalMessage.textContent = 'You just about escaped, scarred for life';
  } else {
-    modalMessage.textContent = 'You really need to practice more..';
+    modalMessage.style.color = 'red';
+    modalMessage.textContent = 'You were eaten alive..';
  }
 
-    document.querySelector('.overlay').style.display = 'block';
+    document.querySelector('.overlay').style.display = 'flex';
 }
 
 const closeModal = () => {
     document.querySelector('.overlay').style.display = 'none';
     resetGame ();
+}
+
+const showModaltwo = () => {
+    instmodal.style.display = "flex";
+}
+const hideModaltwo = () => {
+    instmodal.style.display = "none";
 }
 
 endButton.style.display = "none";
@@ -118,7 +136,10 @@ startButton.addEventListener("click", () => {
     }, audioDuration);
     });
 
-    
+    hideModaltwo()
+
 startButton.addEventListener('click', startGame)
 endButton.addEventListener('click', endGame)
 closeModalButton.addEventListener('click', closeModal)
+instButton.addEventListener('click', showModaltwo)
+closeinst.addEventListener('click', hideModaltwo)
