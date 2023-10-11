@@ -7,6 +7,7 @@ const mosqAudio = document.querySelector('#mosq')
 const gunAudio = document.querySelector('#gun')
 const gameOver = document.querySelector('#gameover')
 const mortalKombat = document.querySelector('#mortalkombat')
+const bestAudio = document.querySelector('#best')
 const instButton = document.querySelector('#instButton')
 const instmodal = document.querySelector('#instmodal')
 const closeinst = document.querySelector('#closeinst')
@@ -31,6 +32,7 @@ const clickCircle = (i) => {
     gunAudio.pause();
     gunAudio.currentTime = 0;
     gunAudio.play();
+    gunAudio.volume = 0.4;
 if (i !== active) {
    return endGame()
 }
@@ -78,10 +80,18 @@ circles[active].classList.remove('active')
     console.log(active);
 }
 const endGame = () => {
+    if (score >= 200) {
+        bestAudio.play()
+        setTimeout(() => {
+            mortalKombat.play();
+        }, 7000);
+    } else {
     gameOver.play()
     setTimeout(() => {
         mortalKombat.play();
     }, 1000);
+    }
+   
     
     clearTimeout(timer)
     showModal()
@@ -95,8 +105,11 @@ const showModal = () => {
     const finalScore = document.querySelector('.final-score');
     finalScore.textContent = score;
  const modalMessage = document.querySelector('#modalMessage');
+ const modalTitle = document.querySelector('#modalTitle');
 
  if (score >= 200) {
+    modalTitle.style.color = 'green';
+    modalTitle.textContent = 'Good job!'
     modalMessage.style.color = 'green';
     modalMessage.textContent = 'You decimated those nasty demons, you rock!';
  } else if (score >= 90) {
